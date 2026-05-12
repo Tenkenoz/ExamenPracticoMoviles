@@ -12,6 +12,7 @@ class SeccionFormularioComida extends StatelessWidget {
   final ValueChanged<String?> onProductoChanged;
   final ValueChanged<String?> onComboChanged;
   final VoidCallback onCalcular;
+  final VoidCallback onLimpiar;
 
   const SeccionFormularioComida({
     super.key,
@@ -24,6 +25,7 @@ class SeccionFormularioComida extends StatelessWidget {
     required this.onProductoChanged,
     required this.onComboChanged,
     required this.onCalcular,
+    required this.onLimpiar,
   });
 
   @override
@@ -47,6 +49,15 @@ class SeccionFormularioComida extends StatelessWidget {
             label: 'Calcular Pedido',
             icon: Icons.calculate,
             onPressed: onCalcular,
+          ),
+          const SizedBox(height: 12),
+          OutlinedButton.icon(
+            onPressed: onLimpiar,
+            icon: const Icon(Icons.refresh),
+            label: const Text('Limpiar Formulario'),
+            style: OutlinedButton.styleFrom(
+              minimumSize: const Size(double.infinity, 50),
+            ),
           ),
         ],
       ),

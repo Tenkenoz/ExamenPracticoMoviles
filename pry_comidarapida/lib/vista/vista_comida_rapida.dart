@@ -43,6 +43,16 @@ class _VistaComidaRapidaState extends State<VistaComidaRapida> {
     }
   }
 
+  void _limpiar() {
+    setState(() {
+      _clienteController.clear();
+      _cantidadController.clear();
+      _productoSeleccionado = null;
+      _comboSeleccionado = null;
+      nota = "";
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,6 +72,7 @@ class _VistaComidaRapidaState extends State<VistaComidaRapida> {
               onProductoChanged: (val) => setState(() => _productoSeleccionado = val),
               onComboChanged: (val) => setState(() => _comboSeleccionado = val),
               onCalcular: _calcular,
+              onLimpiar: _limpiar,
             ),
           ),
             Padding(
