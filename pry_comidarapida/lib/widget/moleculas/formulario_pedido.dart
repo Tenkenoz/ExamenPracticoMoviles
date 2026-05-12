@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../controlador/controlador_comidarapida.dart';
 import '../atomos/inputPersonalizado.dart';
 import '../atomos/inputDecimal.dart';
 import '../atomos/selector_simple.dart';
@@ -35,14 +36,18 @@ class FormularioPedido extends StatelessWidget {
         ),
         const SizedBox(height: 16),
         SelectorSimple(
-          etiqueta: 'Producto',
+          etiqueta: productoSeleccionado != null 
+            ? 'Producto (\$${ComidaControlador.preciosProductos[productoSeleccionado]?.toStringAsFixed(2)})'
+            : 'Seleccione Producto',
           valor: productoSeleccionado,
           opciones: productos,
           onChanged: onProductoChanged,
         ),
         const SizedBox(height: 16),
         SelectorSimple(
-          etiqueta: 'Tipo de Combo',
+          etiqueta: comboSeleccionado != null 
+            ? 'Tipo de Combo (\$${ComidaControlador.preciosCombos[comboSeleccionado]?.toStringAsFixed(2)})'
+            : 'Seleccione Combo',
           valor: comboSeleccionado,
           opciones: combos,
           onChanged: onComboChanged,

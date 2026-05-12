@@ -14,6 +14,7 @@ class ComidaControlador {
   };
 
   PedidoComidaModelo? calcularPedido(String cliente, String producto, String combo, String cantidadStr) {
+    // El controlador solo valida y asigna
     if (cliente.isEmpty || producto.isEmpty || combo.isEmpty || cantidadStr.isEmpty) {
       return null;
     }
@@ -23,21 +24,13 @@ class ComidaControlador {
       return null;
     }
 
-    double precioBase = preciosProductos[producto] ?? 0.0;
-    double precioCombo = preciosCombos[combo] ?? 0.0;
-
-    double subtotal = (precioBase + precioCombo) * cantidad;
-    double iva = subtotal * 0.15;
-    double total = subtotal + iva;
-
     return PedidoComidaModelo(
       cliente: cliente,
       producto: producto,
       tipoCombo: combo,
       cantidad: cantidad,
-      subtotal: subtotal,
-      iva: iva,
-      total: total,
+      precioBase: preciosProductos[producto] ?? 0.0,
+      precioCombo: preciosCombos[combo] ?? 0.0,
     );
   }
 }
